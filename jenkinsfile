@@ -1,47 +1,21 @@
 pipeline {
     agent any
 
-    environment {
-        DOCKER_IMAGE = 'votre-image:latest'  // Nom et tag de l'image Docker
-        DOCKER_REGISTRY = 'votre-registry'  // Optionnel, si vous voulez pousser l'image vers un registre
-    }
-
     stages {
-        stage('Clone repository') {
+        stage('Build docker image') {
             steps {
-                // Cloner le dépôt Git si nécessaire (optionnel si Jenkins fait déjà ça)
-                git 'https://votre-repository-url.git'
+                bat 'docker builtd -t ml_project .'
             }
         }
-
-        stage('Build Docker Image') {
+        stage('tag buitd image') {
             steps {
-                script {
-                    // Construire l'image Docker en utilisant le Dockerfile
-                    sh 'docker build -t ${DOCKER_IMAGE} .'
-                }
+                bat 'docker tag ml_project ibouaida/ml_project:v1 .'
             }
         }
-
-        stage('Push Docker Image to Registry') {
-            when {
-                branch 'main'  // Optionnel : Pousser uniquement sur la branche "main"
-            }
+        stage('Deploy') {
             steps {
-                script {
-                    // Connexion au registre Docker (si besoin)
-                    sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD $DOCKER_REGISTRY'
-                    // Pousser l'image Docker vers le registre
-                    sh 'docker push ${DOCKER_IMAGE}'
-                }
+                echo 'Teste le deployement vers enrovironnement de production'
             }
-        }
-    }
-
-    post {
-        always {
-            // Nettoyer après chaque exécution (optionnel)
-            cleanWs()
         }
     }
 }
