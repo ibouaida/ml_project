@@ -1,21 +1,60 @@
 pipeline {
-    agent any
+    agent any  // Utilise n'importe quel agent disponible
+
+    environment {
+        // Variables d'environnement, à personnaliser
+        GITHUB_CREDENTIALS = 'github-ibouaida-Ubpvt@5383'  // ID des credentials pour GitHub
+        REPO_URL = 'https://github.com/ibouaida/ml_project.git'  // URL du dépôt GitHub
+    }
 
     stages {
-        stage('Build docker image') {
+        stage('Checkout') {
             steps {
-                bat 'docker builtd -t ml_project .'
+                // Cloner le dépôt depuis GitHub
+                git credentialsId: "${ibouaida/Ubpvt@5383}", url: "${https://github.com/ibouaida/ml_project.git}"
             }
         }
-        stage('tag buitd image') {
+
+        stage('Build') {
             steps {
-                bat 'docker tag ml_project ibouaida/ml_project:v1 .'
+                script {
+                    // Ajoutez ici les commandes pour construire votre projet, par exemple pour un projet Node.js
+                    // Dans cet exemple, nous utilisons un projet Node.js comme référence
+                    sh 'npm install'
+                    sh 'npm run build'
+                }
             }
         }
+
+        stage('Test') {
+            steps {
+                script {
+                    // Exécuter les tests unitaires
+                    // Exemple pour un projet Node.js avec Mocha
+                    sh 'npm test'
+                }
+            }
+        }
+
         stage('Deploy') {
             steps {
-                echo 'Teste le deployement vers enrovironnement de production'
+                script {
+                    // Déployer l'application après la réussite des tests
+                    // Exemple pour un déploiement à un environnement Docker (selon votre configuration)
+                    // Si vous utilisez Docker, remplacez cette étape par votre processus de déploiement spécifique
+                    sh 'docker build -t ml_project .'
+                    sh 'docker run -d -p 80:80 ml_project'
+                }
             }
+        }
+    }
+
+    post {
+        success {
+            echo 'Pipeline terminé avec succès!'
+        }
+        failure {
+            echo 'Le pipeline a échoué!'
         }
     }
 }
