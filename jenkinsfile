@@ -20,18 +20,18 @@ pipeline {
                 script {
                     // Ajoutez ici les commandes pour construire votre projet, par exemple pour un projet Node.js
                     // Dans cet exemple, nous utilisons un projet Node.js comme référence
-                    sh 'npm install'
-                    sh 'npm run build'
+                    bat 'docker builtd -t ml_project .'
+                    
                 }
             }
         }
 
-        stage('Test') {
+        stage('Tag build image') {
             steps {
                 script {
                     // Exécuter les tests unitaires
                     // Exemple pour un projet Node.js avec Mocha
-                    sh 'npm test'
+                    bat 'docker tag ml_project ibouaida/ml_project:v1 .'
                 }
             }
         }
@@ -43,7 +43,7 @@ pipeline {
                     // Exemple pour un déploiement à un environnement Docker (selon votre configuration)
                     // Si vous utilisez Docker, remplacez cette étape par votre processus de déploiement spécifique
                     sh 'docker build -t ml_project .'
-                    sh 'docker run -d -p 80:80 ml_project'
+                    
                 }
             }
         }
