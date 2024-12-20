@@ -1,20 +1,6 @@
 pipeline {
     agent any  // Utilise n'importe quel agent disponible
 
-    environment {
-        // Variables d'environnement, à personnaliser
-        GITHUB_CREDENTIALS = 'ibouaida/Ubpvt@5383'  // ID des credentials pour GitHub
-        REPO_URL = 'https://github.com/ibouaida/ml_project.git'  // URL du dépôt GitHub
-    }
-
-    stages {
-        stage('Checkout') {
-            steps {
-                // Cloner le dépôt depuis GitHub
-                git credentialsId: "${ibouaida/Ubpvt@5383}", url: "${https://github.com/ibouaida/ml_project.git}"
-            }
-        }
-
         stage('Build') {
             steps {
                 script {
@@ -42,7 +28,7 @@ pipeline {
                     // Déployer l'application après la réussite des tests
                     // Exemple pour un déploiement à un environnement Docker (selon votre configuration)
                     // Si vous utilisez Docker, remplacez cette étape par votre processus de déploiement spécifique
-                    sh 'docker build -t ml_project .'
+                    bat 'docker build -t ml_project .'
                     
                 }
             }
