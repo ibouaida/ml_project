@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         // Variables d'environnement, à personnaliser
-        GITHUB_CREDENTIALS = 'github-ibouaida-Ubpvt@5383'  // ID des credentials pour GitHub
+        GITHUB_CREDENTIALS = 'ibouaida/Ubpvt@5383'  // ID des credentials pour GitHub
         REPO_URL = 'https://github.com/ibouaida/ml_project.git'  // URL du dépôt GitHub
     }
 
