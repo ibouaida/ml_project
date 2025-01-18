@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Cloner le dépôt') {
             steps {
-                git branch: 'main', url: 'https://github.com/ouzlaye/ml_project.git'
+                git branch: 'main', url: 'https://https://github.com/ibouaida/ml_project.git/ml_project.git'
             }
         }
 }
