@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build docker image') {
             steps {
-                bat 'docker builtd -t ml_project .'
+                bat 'docker builtd -t ml_project/frontend .'
             }
         }
         stage('tag buitd image') {
