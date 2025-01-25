@@ -17,14 +17,14 @@ pipeline {
                 stage('Backend') {
                     steps {
                         script {
-                            docker.build("${BACKEND_IMAGE}", "./backend")
+                            docker.build("${ml_project-backend}", "./backend")
                         }
                     }
                 }
                 stage('Frontend') {
                     steps {
                         script {
-                            docker.build("${FRONTEND_IMAGE}", "./frontend")
+                            docker.build("${ml_project-frontend}", "./frontend")
                         }
                     }
                 }
