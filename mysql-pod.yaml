@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mysql-pod-with-pvc
+spec:
+  containers:
+    - name: mysql
+      image: mysql:5.7
+      env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: "rootpassword"  # Remplacez par votre mot de passe
+      ports:
+        - containerPort: 3306
+      volumeMounts:
+        - name: mysql-storage
+          mountPath: /var/lib/mysql  # Emplacement où MySQL stocke les données
+  volumes:
+    - name: mysql-storage
+      persistentVolumeClaim:
+        claimName: mysql-pvc  # Utilisation du PVC créé précédemment
