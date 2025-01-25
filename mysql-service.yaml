@@ -4,10 +4,10 @@ metadata:
  name: mysql-service
  namespace: projetmaster
 spec: 
- type: ClusterIP
- selector: 
+  type: ClusterIP
+  selector: 
     app: mysql-deployment
- ports: 
+  ports: 
    - protocole: TCP
      port: 3306
      targetPort: 3306
