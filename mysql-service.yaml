@@ -8,7 +8,7 @@ spec:
   selector: 
     app: mysql-deployment
   ports: 
-  - protocole: TCP
+  - protocol: TCP
     port: 3306
     targetPort: 3306
  
