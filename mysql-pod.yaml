@@ -9,6 +9,12 @@ spec:
       env:
         - name: MYSQL_ROOT_PASSWORD
           value: iboudb  # Remplacez par votre mot de passe
+        - name: MYSQL_DATABASE
+          value: masterdb
+        - name: MYSQL_USER
+          value: ibou
+        - name: MYSQL_PASSWORD
+          value: iboudb
       ports:
         - containerPort: 3306
       volumeMounts:
