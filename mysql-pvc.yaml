@@ -4,11 +4,6 @@ metadata:
   name: mysql-pvc
   namespace: projetmaster
 spec:
-  accessModes:
-    - ReadWriteOnce
   resources:
     requests:
-      storage: 2Gi
-  storageClassName: standard
-provisioner: kubernetes.io/aws-ebs
-allowVolumeExpansion: true
+      storage: 6Gi  # Nouvelle taille du PVC
