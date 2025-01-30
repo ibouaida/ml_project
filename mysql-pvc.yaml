@@ -10,3 +10,5 @@ spec:
     requests:
       storage: 2Gi
   storageClassName: standard
+provisioner: kubernetes.io/aws-ebs
+allowVolumeExpansion: true
