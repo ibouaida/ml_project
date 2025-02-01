@@ -8,5 +8,5 @@ spec:
   ports:
     - port: 3000         # Le port sur lequel l'application écoute (le port du conteneur)
       targetPort: 3000    # Le port de l'application dans le conteneur
-      nodePort: 30001     # Le port exposé sur les nœuds du cluster
+      nodePort: 30002     # Le port exposé sur les nœuds du cluster
   type: NodePort          # Définir le type du service en NodePort
