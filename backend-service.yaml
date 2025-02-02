@@ -7,6 +7,6 @@ spec:
     app: backend
   ports:
     - protocol: TCP
-      port: 5000  # Port externe (ce sera le port d'accès)
+      port: 3000  # Port externe (ce sera le port d'accès)
       targetPort: 5000  # Port du conteneur
   type: LoadBalancer  # Modification ici
