@@ -11,5 +11,4 @@ spec:
       targetPort: 5000  # Port du conteneur
   type: LoadBalancer  # Assure-toi que le type est toujours LoadBalancer
   # Par exemple, tu pourrais ajouter une annotation pour un load balancer spécifique
-  annotations:
-    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "http"
+  
