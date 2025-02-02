@@ -1,11 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: backend-service   # Nom du service
+  name: backend-service
 spec:
   selector:
-    app: backend          # Sélecteur d'applications, correspond aux labels des pods du backend
+    app: backend
   ports:
-    - port: 5000          # Le port exposé par le service
-      targetPort: 5000     # Le port sur lequel l'application backend écoute
-  clusterIP: None         # 'ClusterIP' par défaut, mais on peut omettre cette ligne car c'est implicite
+    - protocol: TCP
+      port: 5000  # Port externe (ce sera le port d'accès)
+      targetPort: 5000  # Port du conteneur
+  type: LoadBalancer  # Modification ici
