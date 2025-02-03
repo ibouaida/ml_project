@@ -7,7 +7,7 @@ spec:
     app: backend
   ports:
     - protocol: TCP
-      port: 80  # Port externe modifié
+      port: 5OOO  # Port externe modifié
       targetPort: 5000  # Port du conteneur
   type: ClusterIP  # Assure-toi que le type est toujours LoadBalancer
   # Par exemple, tu pourrais ajouter une annotation pour un load balancer spécifique
