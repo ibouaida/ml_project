@@ -2,13 +2,12 @@ apiVersion: v1
 kind: Service
 metadata:
   name: backend-service
+  namespace: default  # Remplace si nécessaire avec le namespace de ton choix
 spec:
   selector:
-    app: backend
+    app: backend  # L'étiquette utilisée pour le déploiement backend
   ports:
     - protocol: TCP
-      port: 5OOO  # Port externe modifié
-      targetPort: 5000  # Port du conteneur
-  type: ClusterIP  # Assure-toi que le type est toujours LoadBalancer
-  # Par exemple, tu pourrais ajouter une annotation pour un load balancer spécifique
-  
+      port: 8080          # Le port sur lequel le service est exposé à l'intérieur du cluster
+      targetPort: 5000     # Le port sur lequel le conteneur écoute
+  type: ClusterIP         # Type de service (par défaut c'est ClusterIP)
